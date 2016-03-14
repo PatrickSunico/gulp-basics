@@ -1,0 +1,31 @@
+//& use end to remove spacing SCSS is an idiot
+// use CSS Comments so koala can compile your comments to CSS
+//Ex. /*Some comment*/
+// 4. Skillsets Section
+
+#services {
+  text-align:center;
+  h2 {
+    color: $primary-color;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  p {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  img {
+    height: 156px;
+    width: 280px;
+    margin-top: 20px;
+  }
+  #web-resp, #web-design, #maintenance {
+    margin-top: 6%;
+    margin-bottom: 6%;
+  }
+  .text-align {
+    text-align: left;
+  }
+}

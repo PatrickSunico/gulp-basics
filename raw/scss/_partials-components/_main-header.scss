@@ -1,0 +1,55 @@
+//& use end to remove spacing SCSS is an idiot
+// use CSS Comments so koala can compile your comments to CSS
+//Ex. /*Some comment*/
+  // 2.Main-header
+//Mixins
+@import '_mixins/_mixins.scss';
+/*2 Main Header section*/
+#header-section {
+  text-align: center;
+  background: url('../img/bg.jpg')no-repeat center center fixed;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  position: relative;
+  width: auto;
+  height: auto;
+  box-shadow: 0 1200px rgba(0,0,0,0.6) inset;
+  color: white;
+
+//2-2 headline style static
+  .headline {
+    //padding static
+    padding: 16% 0;
+
+    //Padding breakpoints
+    @include breakpoint-991 {
+      padding: 20% 0;
+    }
+    @include breakpoint-640 {
+      padding: 40% 0;
+    } //End Media queries
+    h1 { //Font-style static
+      font-size: 96px;
+      margin: 20px;
+      font-weight: normal;
+      -moz-transition: all 0.8s ease;
+      -o-transition: all 0.8s ease;
+      -ms-transition: all 0.8s ease;
+      -webkit-transition: all 0.8s ease;
+      transition: all 0.8s ease;
+
+      //Font-size resize breakpoints
+      @include breakpoint-1200 {
+        font-size: 96px;
+      }
+      @include breakpoint-991 {
+        font-size: 60px;
+      }
+      @include breakpoint-640 {
+        font-size: 38px;
+      } // end media queries
+    }//End H1
+  }//End headline
+}//End header-section
