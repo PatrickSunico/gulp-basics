@@ -1,0 +1,23 @@
+{
+  "name": "gulp-basics",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Chikoystarr <chikoystarr@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/PatrickSunico/gulp-basics",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "jquery-easing-original": "^1.3.2",
+    "bootstrap": "^3.3.6"
+  }
+}
