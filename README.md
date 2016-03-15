@@ -12,12 +12,16 @@ This is just a demo and for educational purposes primarily for me but you can tr
 
 #### Here we can see the initial setup of all of the basic gulp packages in their respective uses
 ```javascript
-var gulp = require('gulp'); // Initial Gulp require setup
-var uglify = require("gulp-uglify"); //gulp plugin that minifies javascript code
-var concat = require("gulp-concat"); //gulp plugin that concatenates javascript code into one file
-var sass = require("gulp-sass"); //compiles scss to css
-var rename = require("gulp-rename"); // renames files
-var plumber = require("gulp-plumber"); //resumes watch changes if an error occurs // note plumber should always be first below gulp.src
+//require Gulp packages
+var gulp = require("gulp"),
+    uglify = require("gulp-uglify"), //gulp plugin that minifies javascript code
+    concat = require("gulp-concat"), //gulp plugin that concatenates javascript code into one file
+    sass = require("gulp-sass"), //compiles scss to css
+    rename = require("gulp-rename"), // renames files
+    plumber = require("gulp-plumber"), //resumes watch changes if an error occurs // note plumber should always be first below gulp.src
+    livereload = require("gulp-livereload"), //live reloads on change
+    imagemin = require("gulp-imagemin"),//compress image files
+    prefix = require("gulp-autoprefixer"); //auto prefixes vendor prefixes i.e -webkit- -moz- -o- etc.
 ```
 
 #2. Compiling Javascript files into one main js file
@@ -41,20 +45,29 @@ gulp.task('scripts', function() { //scripts is just a naming convention but we c
 
 ### Kind of the same as #.2 here we want to first find all of the scss files inside of the raw/scss folder
 
+####To Run this gulp task type in
+```
+gulp stylesheets
+```
 ```Javascript
 //stylesheets
 //compiles scss into a css minified file
 // var outputstyle = {outputStyle :'compressed'};
 gulp.task('stylesheets', function() { // default build name //gulp stylesheets
-  gulp.src('raw/scss/*.scss') //gets all uncompiled scss files
+  return gulp.src('raw/scss/*.scss') //gets all uncompiled scss files
     .pipe(plumber()) //this always comes first at the pipeline
-    .pipe(sass({outputStyle: 'compressed'})) //compile all sass files to css into a minified file
+    .pipe(sass({outputStyle: 'expanded'})) //compile all sass files to css into a minified file
+    .pipe(prefix('last 2 versions'))
     .pipe(rename('main.min.css')) //rename the minified css file
     .pipe(gulp.dest('dist')); // sends it to raw/css into an unminified css
 });
 ```
 #4. Watch Tasks
 ### Here want to watch for any changes inside of their respective folders for any errors which saves a ton of time and reduces alot of headache
+#### to run this gulp task type in
+```
+gulp watch
+```
 
 ```javascript
 //Watch Tasks
@@ -67,3 +80,32 @@ gulp.task('watch', function() {
   ('raw/scss/_partials-components/**/*.scss',['stylesheets']); //watches all scss changes in raw/scss/_partials-components
 });
 ```
+
+#5. Image Compress Task
+### This task just basically compresses and removes some meta-tags in all of your images in your img folder then sends the output into your dist folder.
+#### To run this gulp task type in
+```
+gulp image
+```
+``` javascript
+gulp.task('image',function(){
+  gulp.src('raw/img/*')
+  .pipe(imagemin())
+  .pipe(gulp.dest('dist/img'));
+});
+```
+
+#6. Run all of your task at once
+###To run all of your tasks at once make a new gulp task and name it default then compile all of your tasks names i.e scripts, stylesheets, image, watch .etc.
+
+#### To run all tasks simply type in:
+```
+gulp
+```
+
+```javascript
+gulp.task('default', ['scripts','stylesheets','image','watch']);
+```
+
+
+#### Simple as that
