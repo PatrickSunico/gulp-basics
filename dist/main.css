@@ -173,7 +173,7 @@ header .btn-sharp, section .btn-sharp {
 /*2 Main Header section*/
 #header-section {
   text-align: center;
-  background: url("../img/bg.jpg") no-repeat center center fixed;
+  background: url("dist/img/bg.jpg") no-repeat center center fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
